@@ -110,12 +110,17 @@ h3 {
 nav {
   width: 100%;
   background-color: #333;
-  padding: 1rem 1.5rem;
+  height: 40px;
   display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-left: 2rem;
   align-items: center;
   color: white;
-  position: relative;
+  position: fixed;
   margin: 0;
+  z-index: 1000; /* Asegura que se quede encima de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 h1 {
   margin: 2rem 0;
@@ -166,7 +171,9 @@ td {
   text-align: center;
 }
 section {
-  padding: 2rem 0;
+  padding: 2rem 3rem 2rem 0;
+  min-height: 100vh;
+  margin-bottom: 3rem;
 }
 
 /*  Classes tag CSS */
@@ -185,18 +192,6 @@ section {
   background-color: white;
 }
 
-.project-header {
-  display: flex;
-  gap: 1.5rem;
-  margin: 1rem 1rem 1rem 1rem;
-  width: 100%;
-}
-
-.project-description {
-  margin-left: 1.5rem;
-  margin-bottom: 4rem;
-}
-
 .section-title {
   display: flex;
   justify-content: center;
@@ -204,13 +199,81 @@ section {
 
 /*  IDs tag CSS */
 
+/*______________________NavBar________________________*/
+.nav-list {
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+}
+.nav-list ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+nav .nav-list li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+nav .nav-list a {
+  display: flex; /* Convierte el enlace en un contenedor flexible */
+  align-items: center; /* Centra el texto verticalmente */
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  height: 100%;
+  width: 100%;
+}
+
+nav li:hover {
+  background-color: var(--secondary-300);
+}
+
 /*______________________Portada - Imagen________________________*/
+.about-me-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.about-me-grid #body-header {
+  flex: 7; /* Esto hace que el header ocupe más espacio */
+}
+
+.about-me-grid .me-cards {
+  flex: 3; /* Esto hace que la parte de las tarjetas ocupe menos espacio */
+}
+
+.about-me-grid .me-cards .card {
+  flex: 1; /* Las tarjetas dentro de 'flex-2-cards' se distribuyen equitativamente */
+}
+
+.me-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem; /* Espaciado entre las tarjetas */
+}
 
 #body-header {
   width: 100%; /* Ajustar el div al ancho deseado */
   position: relative; /* Posicionamiento relativo para el h1 */
   overflow: hidden; /* Evita que la imagen sobresalga del contenedor */
-  height: 100vh;
 }
 
 #body-header h1 {
@@ -228,13 +291,10 @@ section {
 
 #body-header img {
   width: 100%;
-  display: block;
-  object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor sin deformarla */
   height: auto; /* Mantiene la proporción de aspecto */
-  object-position: center center; /* Posiciona la imagen en la esquina superior izquierda */
 }
 
-/*______________________flex with 2 columns type________________________*/
+/*_________________________Card Styling General______________________________*/
 
 .flex-2-cards {
   display: flex;
@@ -247,23 +307,19 @@ section {
   width: 100%; /* Esta tarjeta ocupa el 100% del ancho */
 }
 
-.flex-2-cards .card {
-  flex: 1; /* Permite que las tarjetas crezcan para llenar el espacio disponible */
-}
-
 /* Contenedor de la fila con las dos tarjetas (distribuidas con space-between) */
 .card-row {
   display: flex;
   justify-content: space-between; /* Distribuye las tarjetas con espacio entre ellas */
   gap: 2rem; /* Espaciado entre las tarjetas */
 }
-/*______________________About Me & What I do________________________*/
 
 .card {
   background-color: var(--light-bg-solid);
   padding: 0.2rem 1.6rem 1.6rem 1.6rem;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  flex: 1;
 }
 
 .card ul {
@@ -292,6 +348,26 @@ section {
 
 .service p {
   color: var(--dark-font-solid);
+}
+
+/*_________________________Card Styling Particular______________________________*/
+#about-me {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ocupa el 100% del contenedor */
+}
+
+#about-me h2 {
+  align-self: flex-start; /* Alinea el título al inicio */
+}
+
+#about-me p {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  flex-grow: 1; /* Hace que el párrafo ocupe el espacio restante */
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente dentro del párrafo */
+  justify-content: center; /* Centra el contenido horizontalmente dentro del párrafo */
 }
 
 /*______________________Tabla Tecnologías________________________*/
@@ -335,17 +411,96 @@ tbody tr:nth-child(odd) {
 
 /*______________________Portfolios________________________*/
 
+.cards-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 30rem;
+  height: 40rem;
+  min-height: 30rem;
+  border: var(--dark-500) 0.1rem solid;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5), 0 6px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0.5rem;
+  z-index: 1; /*Para que quede por encima de la card Proyectos*/
+}
+.project-card-header {
+  flex: 1;
+  width: 100%;
+}
+.project-card-img {
+  flex: 6;
+}
+
+.project-card-img img {
+  width: 100%;
+  height: 20rem;
+  max-height: 100%; /* Limita la altura para que no empuje otros elementos */
+  overflow: hidden;
+}
+
+.project-card-description {
+  flex: 2;
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-card-footer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Diseño como fondo de la card pero no me gustó*/
+
+/* .project-card-description p {
+  background-color: rgba(255, 255, 255, 0.8);
+} */
+/* .project-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 70%;
+} */
+/* .project-card-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+} */
+
 #portfolio-projects {
   width: 100%;
   margin-bottom: 2rem;
-  margin: 2rem 0; /* Separación entre proyectos y la siguiente sección */
 }
 
-#portfolio-projects a {
+.project-card-footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   background-color: var(--primary-solid);
   color: var(--light-font-solid);
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
   border-radius: 0.25rem;
+  height: 100%;
+  font-size: 1.6rem;
 }
 
 /*______________________Contacto________________________*/
@@ -374,4 +529,34 @@ tbody tr:nth-child(odd) {
   gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+/*______________________Media Queries________________________*/
+
+/* Media query para pantallas menores a 480px */
+/* para el resto de tamaños de pantalla, flex responde bien sin necesidad de media queries */
+
+@media (max-width: 780px) {
+  .card-row {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  .about-me-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+  .me-cards {
+    gap: 1rem;
+  }
+  section {
+    padding: 2rem 0 2rem 0;
+    min-height: auto;
+    height: auto;
+    margin-bottom: 0px;
+  }
 }
