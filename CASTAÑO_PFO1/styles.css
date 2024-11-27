@@ -1,0 +1,562 @@
+/*///////////////// AJUSTES GENERALES//////////////////*/
+/* Importar Fuente */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Raleway:wght@100;300;500&display=swap");
+
+/* Normalización */
+:root {
+  /* Pallete - Fijo mi paleta de colores segun mi Personal Branding*/
+  --primary-solid: #ff3333;
+  --primary-900: rgba(255, 51, 51, 0.9);
+  --primary-500: rgba(255, 51, 51, 0.5);
+  --primary-300: rgba(255, 51, 51, 0.3);
+
+  --secondary-solid: #1d84b5;
+  --secondary-900: rgba(29, 132, 181, 0.9);
+  --secondary-500: rgba(29, 132, 181, 0.5);
+  --secondary-300: rgba(29, 132, 181, 0.3);
+
+  --dark-solid: #1f1f1f;
+  --dark-900: rgba(31, 31, 31, 0.9);
+  --dark-500: rgba(31, 31, 31, 0.5);
+  --dark-300: rgba(31, 31, 31, 0.3);
+
+  --light-font-solid: #ffffff;
+  --dark-font-solid: #1f1f1f;
+
+  --dark-bg-solid: #30343f;
+  --light-bg-solid: #fafaff;
+
+  /* Typography */
+  --base-font: "Inter", sans-serif;
+  --alternativ-font: "Raleway", sans-serif;
+
+  /* Font-sizes */
+  --font-display: 4.6em;
+  --font-jumbo: 3.8em;
+  --font-xlarge: 3em;
+  --font-large: 2.4em;
+  --font-medium: 1.8em;
+  --font-small: 1.6em;
+  --font-xsmall: 1.4em;
+
+  /* Spacing */
+  --spacing-128: 12.8rem;
+  --spacing-68: 6.8rem;
+  --spacing-36: 3.6rem;
+  --spacing-28: 2.8rem;
+  --spacing-24: 2.4rem;
+  --spacing-20: 2rem;
+  --spacing-16: 1.6rem;
+  --spacing-12: 1.2rem;
+  --spacing-8: 0.8rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; /* tamaño de fuente de navegador prom = 16px entonces aqui esto fijando que 1rem = 16px * 0.625 = 10px -> de esta forma los rem me dan numeros redondos, es decir 1.6rem = 16px*/
+  font-family: var(--base-font);
+  font-weight: 500;
+  background-color: var(--dark-bg-solid);
+  color: var(--light-font-solid);
+}
+section,
+header,
+footer {
+  font-family: var(--alternativ-font);
+  color: var(--light-font-solid);
+  background-color: var(--dark-bg-solid);
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  color: inherit;
+}
+p {
+  font-size: 1.2em;
+  font-family: inherit;
+}
+h2 {
+  color: var(--primary-solid);
+  font-size: 2rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+h3 {
+  color: var(--secondary-solid);
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* Fin Normalizacion */
+
+/*  HTML tag CSS */
+nav {
+  width: 100%;
+  background-color: #333;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-left: 2rem;
+  align-items: center;
+  color: white;
+  position: fixed;
+  margin: 0;
+  z-index: 1000; /* Asegura que se quede encima de otros elementos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+h1 {
+  margin: 2rem 0;
+  text-align: center;
+}
+form {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+form input {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #ccc;
+}
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+table {
+  width: 80%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+}
+table,
+th,
+td {
+  border: 0.1rem solid #ccc;
+}
+thead {
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: 0.3rem solid #ccc;
+}
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  text-align: center;
+}
+section {
+  padding: 2rem 3rem 2rem 0;
+  min-height: 100vh;
+  margin-bottom: 3rem;
+}
+
+/*  Classes tag CSS */
+/*______________________nav________________________*/
+.burgerIcon {
+  width: 2.5rem;
+  height: 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burgerIcon div {
+  height: 0.3rem;
+  background-color: white;
+}
+
+.section-title {
+  display: flex;
+  justify-content: center;
+}
+
+/*  IDs tag CSS */
+
+/*______________________NavBar________________________*/
+.nav-list {
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+}
+.nav-list ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+nav .nav-list li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+nav .nav-list a {
+  display: flex; /* Convierte el enlace en un contenedor flexible */
+  align-items: center; /* Centra el texto verticalmente */
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  height: 100%;
+  width: 100%;
+}
+
+nav li:hover {
+  background-color: var(--secondary-300);
+}
+
+/*______________________Portada - Imagen________________________*/
+.about-me-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.about-me-grid #body-header {
+  flex: 7; /* Esto hace que el header ocupe más espacio */
+}
+
+.about-me-grid .me-cards {
+  flex: 3; /* Esto hace que la parte de las tarjetas ocupe menos espacio */
+}
+
+.about-me-grid .me-cards .card {
+  flex: 1; /* Las tarjetas dentro de 'flex-2-cards' se distribuyen equitativamente */
+}
+
+.me-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem; /* Espaciado entre las tarjetas */
+}
+
+#body-header {
+  width: 100%; /* Ajustar el div al ancho deseado */
+  position: relative; /* Posicionamiento relativo para el h1 */
+  overflow: hidden; /* Evita que la imagen sobresalga del contenedor */
+}
+
+#body-header h1 {
+  position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  color: white;
+  text-align: center;
+  z-index: 1; /* Asegura que el h1 esté sobre la imagen */
+}
+
+#body-header img {
+  width: 100%;
+  height: auto; /* Mantiene la proporción de aspecto */
+}
+
+/*_________________________Card Styling General______________________________*/
+
+.flex-2-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem; /* Espaciado entre las tarjetas */
+}
+
+.full-width {
+  width: 100%; /* Esta tarjeta ocupa el 100% del ancho */
+}
+
+/* Contenedor de la fila con las dos tarjetas (distribuidas con space-between) */
+.card-row {
+  display: flex;
+  justify-content: space-between; /* Distribuye las tarjetas con espacio entre ellas */
+  gap: 2rem; /* Espaciado entre las tarjetas */
+}
+
+.card {
+  background-color: var(--light-bg-solid);
+  padding: 0.2rem 1.6rem 1.6rem 1.6rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  flex: 1;
+}
+
+.card ul {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+.card p {
+  color: var(--dark-font-solid);
+  font-size: 1.6rem;
+}
+
+.card ul li {
+  color: var(--dark-bg-solid);
+  font-size: 1.6rem;
+  margin: 0 0 1rem 1rem;
+}
+
+.card .service {
+  background-color: var(---bg-solid);
+  padding: 0.2rem 1.6rem 1.6rem 1.6rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.service p {
+  color: var(--dark-font-solid);
+}
+
+/*_________________________Card Styling Particular______________________________*/
+#about-me {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ocupa el 100% del contenedor */
+}
+
+#about-me h2 {
+  align-self: flex-start; /* Alinea el título al inicio */
+}
+
+#about-me p {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  flex-grow: 1; /* Hace que el párrafo ocupe el espacio restante */
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente dentro del párrafo */
+  justify-content: center; /* Centra el contenido horizontalmente dentro del párrafo */
+}
+
+/*______________________Tabla Tecnologías________________________*/
+
+#known-tech > table {
+  background-color: white;
+  color: var(--dark-900);
+  border: var(--dark-solid) 2px solid;
+}
+
+table {
+  /* Sombra sutil hacia abajo, Sombra de fondo extendida */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5), 0 6px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  overflow: hidden; /* Para que las esquinas queden redondeadas */
+}
+
+td > div {
+  background-color: #ed8b00;
+  display: flex;
+  justify-content: center;
+  fill: var(--light-font-solid);
+  width: 60%;
+  margin: 0px auto;
+  padding: 0px;
+}
+
+thead tr:first-child {
+  background-color: rgb(48, 47, 47);
+  border: var(--dark-solid) 2px solid;
+  color: var(--light-font-solid);
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgb(195, 195, 195, 0.5);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgb(195, 195, 195, 1);
+}
+
+/*______________________Portfolios________________________*/
+
+.cards-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 30rem;
+  height: 40rem;
+  min-height: 30rem;
+  border: var(--dark-500) 0.1rem solid;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5), 0 6px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0.5rem;
+  z-index: 1; /*Para que quede por encima de la card Proyectos*/
+}
+.project-card-header {
+  flex: 1;
+  width: 100%;
+}
+.project-card-img {
+  flex: 6;
+}
+
+.project-card-img img {
+  width: 100%;
+  height: 20rem;
+  max-height: 100%; /* Limita la altura para que no empuje otros elementos */
+  overflow: hidden;
+}
+
+.project-card-description {
+  flex: 2;
+  display: flex;
+  align-items: flex-start;
+}
+
+.project-card-footer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Diseño como fondo de la card pero no me gustó*/
+
+/* .project-card-description p {
+  background-color: rgba(255, 255, 255, 0.8);
+} */
+/* .project-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 70%;
+} */
+/* .project-card-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+} */
+
+#portfolio-projects {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.project-card-footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--primary-solid);
+  color: var(--light-font-solid);
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  height: 100%;
+  font-size: 1.6rem;
+}
+
+/*______________________Contacto________________________*/
+
+#contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea los elementos al centro horizontalmente */
+  justify-content: center; /* Centra el contenido verticalmente */
+  margin: auto;
+  width: 100%;
+}
+
+#contact-form {
+  width: 100%; /* Ajustar el formulario al 100% del contenedor */
+  max-width: 60rem; /* Limitar el ancho máximo del formulario */
+  margin: 0 auto; /* Centrar horizontalmente */
+}
+#contact-form button {
+  background-color: var(--primary-900);
+}
+#contact-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*______________________Media Queries________________________*/
+
+/* Media query para pantallas menores a 480px */
+/* para el resto de tamaños de pantalla, flex responde bien sin necesidad de media queries */
+
+@media (max-width: 780px) {
+  .card-row {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+  .about-me-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+  .me-cards {
+    gap: 1rem;
+  }
+  section {
+    padding: 2rem 0 2rem 0;
+    min-height: auto;
+    height: auto;
+    margin-bottom: 0px;
+  }
+}
